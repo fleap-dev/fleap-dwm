@@ -9,7 +9,10 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static const char *fonts[]          = { "mononoki Nerd Font:size=13:antialias=true:autohint=true" };
+static const char *fonts[]          = {
+	"Apple Color Emoji:size=10:antialias=true:autohint=true",
+	"mononoki Nerd Font:size=13:antialias=true:autohint=true",
+};
 static const char dmenufont[]       = "mononoki Nerd Font:size=13:antialias=true:autohint=true";
 
 static const char color_primary[]       = "#cbbb2e";
@@ -53,9 +56,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[T]",      tile },    /* first entry is default */
+	{ "[@]",      dwindle },
 	{ "[F]",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
-	{ "[@]",      dwindle }
+	{ "[M]",      monocle }
 };
 
 /* key definitions */
@@ -91,7 +94,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_z,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_x,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_v,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_v,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
