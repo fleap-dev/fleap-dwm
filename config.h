@@ -81,8 +81,10 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_Escape, quit,           {0} },
+	{ MODKEY,                       XK_q,      viewInc,        {.i = -1} },
+	{ MODKEY,                       XK_w,      viewInc,        {.i = +1} },
+	{ MODKEY,                       XK_Escape, killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_Escape, quit,           {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
