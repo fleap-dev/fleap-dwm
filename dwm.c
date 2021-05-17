@@ -2164,13 +2164,17 @@ void view(const Arg *arg)
 void viewInc(const Arg *arg)
 {
   unsigned int ts = selmon->tagset[selmon->seltags];
-  if (arg->i > 0){
+  if (arg->i > 0)
+  {
     ts = ts << 1;
-  }else if (arg->i < 0) {
+  }
+  else if (arg->i < 0)
+  {
     ts = ts >> 1;
   }
   ts = ts & TAGMASK;
-  if (ts != 0) {
+  if (ts != 0)
+  {
     selmon->tagset[selmon->seltags] = ts;
     focus(NULL);
     arrange(selmon);
