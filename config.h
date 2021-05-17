@@ -10,10 +10,9 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
 static const char *fonts[]          = {
-	"Apple Color Emoji:size=10:antialias=true:autohint=true",
 	"mononoki Nerd Font:size=13:antialias=true:autohint=true",
+	"Apple Color Emoji:size=13:antialias=true:autohint=true",
 };
-static const char dmenufont[]       = "mononoki Nerd Font:size=13:antialias=true:autohint=true";
 
 static const char color_primary[]       = "#cbbb2e";
 static const char color_back[]          = "#222222";
@@ -24,8 +23,8 @@ static const unsigned int borderalpha = OPAQUE;
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { color_text, color_back, color_back },
-	[SchemeSel]  = { color_back, color_primary,  color_back  },
+	[SchemeNorm] = { color_back, color_primary, color_back },
+	[SchemeSel]  = { color_text, color_back,  color_back  },
 };
 
 static const unsigned int alphas[][3]      = {
@@ -74,14 +73,16 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *micmutecmd[]  = { "/bin/sh", "/home/fleap/Scripts/micmute", "-t", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
+	{ MODKEY,                       XK_Escape, quit,           {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -95,7 +96,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_x,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_v,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -106,7 +106,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
-	{ MODKEY,                       XK_Escape, quit,           {0} },
+	{ 0,                            XK_Pause,  spawn,          {.v = micmutecmd} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
