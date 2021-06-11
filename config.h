@@ -76,6 +76,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *micmutecmd[]  = { "/bin/sh", "/home/fleap/Scripts/micmute", "-t", NULL };
+static const char *screenshotcmd[]  = { "/usr/bin/flameshot", "gui", NULL };
 
 static Key keys[] = {
   /* modifier                     key        function        argument */
@@ -109,6 +110,7 @@ static Key keys[] = {
   { MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
   { MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
   { 0,                            XK_Pause,  spawn,          {.v = micmutecmd} },
+  { 0,                            XK_Print,  spawn,          {.v = screenshotcmd} },
   TAGKEYS(                        XK_1,                      0)
   TAGKEYS(                        XK_2,                      1)
   TAGKEYS(                        XK_3,                      2)
