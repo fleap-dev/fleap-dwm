@@ -1,6 +1,6 @@
 # fleap-dwm
 
-Custom buid of [dwm](https://dwm.suckless.org/) with color emoji support and some patches included.
+Custom fork of [dwm](https://dwm.suckless.org/) with color emoji support and some patches included.
 
 ## Patches
 
